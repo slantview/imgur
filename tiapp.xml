@@ -3,10 +3,10 @@
     <id>com.juceeindustries.realselfies</id>
     <name>Real Selfies</name>
     <version>1.0</version>
-    <publisher>alfred</publisher>
-    <url>http://wehadthetwoforty.com</url>
-    <description>not specified</description>
-    <copyright>2013 by alfred</copyright>
+    <publisher>Jucee Industries</publisher>
+    <url>http://www.jucee.net/</url>
+    <description>All Rights Reserved.</description>
+    <copyright>2013 by Jucee Industries</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>
     <prerendered-icon>false</prerendered-icon>

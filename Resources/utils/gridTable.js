@@ -26,11 +26,12 @@ exports.gridCreator = function(p) {
         });
 
         galleryGridWindow.add(imageGallery);
-    }
+    };
     function fetchPhotos() {
         API_GALLERY.fetchGoneWild({
             callback : setThumbnails,
-            page : 1
+            page : 1,
+            count : 10
         });
     }
 
@@ -98,7 +99,7 @@ createGallery = function(param) {
         top : 10,
         backgroundColor : '#031634',
         backgroundSelectedColor : '#415d88'
-    })
+    });
 
     loadMore.addEventListener('click', function() {
         scrollView.remove(loadMore);

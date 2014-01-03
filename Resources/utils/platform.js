@@ -4,7 +4,7 @@ var platform = {};
 platform.device = Ti.Platform.osname;
 
 //apis
-platform.apiGoneWild = 'http://imgur.com/r/gonewild/new/all/page/';
+platform.apiGoneWild = 'http://sauceapi.rslvr.net/api/v1/all';
 //platform.apiGoneWild = 'http://imgur.com/r/funny/new/all/page/';
 
 //some ui sizes based on the device

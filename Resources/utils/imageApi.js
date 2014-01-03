@@ -23,10 +23,13 @@ exports.fetchGoneWild = function(args) {
             // this.responseXML holds any returned XML (used for SOAP web services)
             // this.responseData holds any returned binary data
             var jason = JSON.parse(this.responseText);
+            Ti.API.info("the Count: " + jason.count);
             Ti.API.info("the JSON: " + jason);
-            Ti.API.info("the JSON Gallery: " + jason.gallery);
-            _.each(jason.gallery, function(p) {
-                var photo = new Picture(p.hash, p.author, fixText(p.title), p.size, p.subreddit, p.created, 'http://i.imgur.com/' + p.hash + p.ext, 'http://i.imgur.com/' + p.hash + 'b' + p.ext);
+            Ti.API.info("the JSON Gallery: " + jason.images);
+            _.each(jason.images, function(p) {
+            	var ext = p.link.split('.').pop();
+                var photo = new Picture(p.id, fixText(p.title), p.size, p.section, p.datetime, 'http://i.imgur.com/' + p.id + '.' + ext, 'http://i.imgur.com/' + p.id + 'b' + '.' + ext);
+                Ti.API.info("Image: " + p.id + " - http://i.imgur.com/" + p.id + '.' + ext);
                 pictures.push(photo);
             });
             args.callback(pictures);
@@ -38,13 +41,13 @@ exports.fetchGoneWild = function(args) {
         timeout : 5000
     });
 
-    xhr.open("GET", platform.apiGoneWild + args.page + '.json');
+    xhr.open("GET", platform.apiGoneWild + "?page=" + args.page + "&count=" + args.count);
     xhr.send();
-}
+};
+
 //picture class
-var Picture = function(id, user, name, size, collection, created, url, thumb) {
+var Picture = function(id, name, size, collection, created, url, thumb) {
     this.id = id;
-    this.user = user;
     this.name = name;
     this.size = size;
     this.collection = collection;
