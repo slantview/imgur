@@ -23,9 +23,9 @@ exports.fetchGoneWild = function(args) {
             // this.responseXML holds any returned XML (used for SOAP web services)
             // this.responseData holds any returned binary data
             var jason = JSON.parse(this.responseText);
-            Ti.API.info("the JSON: " + jason);
-            Ti.API.info("the JSON Gallery: " + jason.gallery);
-            _.each(jason.gallery, function(p) {
+            Ti.API.info("the JSON: " + JSON.stringify(jason));
+            Ti.API.info("the JSON Gallery: " + jason.data);
+            _.each(jason.data, function(p) {
                 var photo = new Picture(p.hash, p.author, fixText(p.title), p.size, p.subreddit, p.created, 'http://i.imgur.com/' + p.hash + p.ext, 'http://i.imgur.com/' + p.hash + 'b' + p.ext);
                 pictures.push(photo);
             });
